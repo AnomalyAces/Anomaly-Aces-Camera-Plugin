@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwilq1mr1x23e"]
+
+[ext_resource type="Script" uid="uid://b1m8jm3jg6w8n" path="res://addons/anomalyAcesCamera/AceCameraManager/ace_camera_manager.gd" id="1_5lhi4"]
+[ext_resource type="PackedScene" uid="uid://b0mx4s8epj5x6" path="res://addons/anomalyAcesInputMap/AceInputMap/AceInputMap.tscn" id="2_oq4l2"]
+
+[node name="AceCameraManager" type="Node" node_paths=PackedStringArray("inputMap")]
+script = ExtResource("1_5lhi4")
+inputMap = NodePath("AceInputMap")
+
+[node name="AceInputMap" parent="." instance=ExtResource("2_oq4l2")]
+input_mode = 2
+toggle_camera_mode_input = "toggle_camera_mode"

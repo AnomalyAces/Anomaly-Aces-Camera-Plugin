@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfydkm21qb8tx"]
+
+[ext_resource type="Script" uid="uid://b7uf24ye4mdk6" path="res://addons/anomalyAcesCamera/AceCamera3D/ace_camera_3d.gd" id="1_e6okl"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_76vyj"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_r3n2y"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_p8fax"]
+
+[sub_resource type="Resource" id="Resource_p68ng"]
+script = ExtResource("4_p8fax")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="AceCamera3D" type="Node3D"]
+script = ExtResource("1_e6okl")
+
+[node name="CameraHost" type="Camera3D" parent="."]
+
+[node name="PhantomCameraHost" type="Node" parent="CameraHost"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("2_76vyj")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+script = ExtResource("3_r3n2y")
+tween_resource = SubResource("Resource_p68ng")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"

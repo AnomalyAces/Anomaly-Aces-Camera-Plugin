@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ilhvsj7bb3rl"]
+
+[ext_resource type="Script" uid="uid://cdreir34tb81b" path="res://addons/anomalyAcesCamera/AceCameraDolly/AceCameraDefaultDolly/ace_camera_default_dolly.gd" id="1_8kmmk"]
+[ext_resource type="PackedScene" uid="uid://bfydkm21qb8tx" path="res://addons/anomalyAcesCamera/AceCamera3D/AceCamera3D.tscn" id="2_c4yes"]
+[ext_resource type="PackedScene" uid="uid://b0mx4s8epj5x6" path="res://addons/anomalyAcesInputMap/AceInputMap/AceInputMap.tscn" id="3_nqy7v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xij5w"]
+
+[node name="AceCameraDefaultDolly" type="CharacterBody3D" node_paths=PackedStringArray("inputMap")]
+script = ExtResource("1_8kmmk")
+inputMap = NodePath("AceInputMap")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_xij5w")
+disabled = true
+
+[node name="Elevation" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+
+[node name="AceCamera3D" parent="Elevation" instance=ExtResource("2_c4yes")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+movement_mode = 1
+follow_mode = 0
+
+[node name="AceInputMap" parent="." instance=ExtResource("3_nqy7v")]
+input_mode = 0
+north_input = "move_forward"
+east_input = "move_right"
+south_input = "move_backward"
+west_input = "move_left"
+camera_rotate_input = "camera_rotate"
+camera_zoom_in_input = "camera_zoom_in"
+camera_zoom_out_input = "camera_zoom_out"
+camera_pan_input = "camera_pan"
+toggle_camera_mode_input = ""
