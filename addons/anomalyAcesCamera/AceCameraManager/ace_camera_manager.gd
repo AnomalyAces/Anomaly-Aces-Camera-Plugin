@@ -96,7 +96,7 @@ func _toggle_camera_priority():
 			## Set the other Cameras priority to 0
 			_set_3d_camera_priority(gridMapCamera, CAMERA_INACITVE)
 	else: 
-		print("2D Not implemented yet")
+		AceLog.printLog(["2D Not implemented yet"])
 
 
 

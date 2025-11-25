@@ -12,8 +12,7 @@ func _enter_tree() -> void:
 		preload("res://addons/anomalyAcesCamera/AceCameraManager/ace_camera_manager.gd"),
 		preload("res://addons/anomalyAcesCamera/AceCameraManager/AceCameraManager.svg")
 	)
-
-	print("AceCameraManager Entering Tree")
+	AceLog.printLog(["AceCameraManager Entering Tree"])
 
 	add_custom_type(
 		"AceCamera3D",
@@ -21,8 +20,7 @@ func _enter_tree() -> void:
 		preload("res://addons/anomalyAcesCamera/AceCamera3D/ace_camera_3d.gd"),
 		preload("res://addons/anomalyAcesCamera/AceCamera.svg")
 	)
-
-	print("AceCamera3D Entering Tree")
+	AceLog.printLog(["AceCamera3D Entering Tree"])
 
 
 func _exit_tree() -> void:

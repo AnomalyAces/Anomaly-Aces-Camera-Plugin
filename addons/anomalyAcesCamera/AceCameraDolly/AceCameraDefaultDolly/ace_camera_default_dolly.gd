@@ -147,7 +147,7 @@ func _jump(target: Vector3) -> void:
 	## If there is a defined gridmap use that to "lock in" a location to avoid camera osciallations
 	var tween: Tween = create_tween()
 	var target_camera_dolly_position: Vector3 = target if gridMap == null else _get_grid_location(target)
-	print("moving to camera to position during zoom: %s" % target_camera_dolly_position)
+	AceLog.printLog(["moving to camera to position during zoom: %s" % target_camera_dolly_position])
 	tween.tween_property(self, "position", target_camera_dolly_position, .5)
 	tween.tween_callback(_move_camera_complete.bind(target_camera_dolly_position))
 
@@ -159,13 +159,13 @@ func _get_mouse_displacement() -> Vector2:
 
 func _get_mouse_3D_location(curr_mouse_pos: Vector2) -> Vector3:
 	#Get current mouse position in the viewport
-	print("Current mouse screen position %s" % curr_mouse_pos)
+	AceLog.printLog(["Current mouse screen position %s" % curr_mouse_pos])
 
 	#Get position translated to world postion
 	var curr_mouse_pos_intersection: ViewportWorldIntersection3D = _get_viewport_to_world_intersection(curr_mouse_pos)
 	var curr_mouse_pos_3D: Vector3 = curr_mouse_pos_intersection.position
-	print("Current mouse pos 3D %s" % curr_mouse_pos_3D)
-	print("Current camera pos 3D %s" % position)
+	AceLog.printLog(["Current mouse pos 3D %s" % curr_mouse_pos_3D])
+	AceLog.printLog(["Current camera pos 3D %s" % position])
 
 	return curr_mouse_pos_3D
 
@@ -195,7 +195,7 @@ func _check_if_active() -> bool:
 func _check_active_state() -> void:
 	_curr_active_status = _is_active
 	if _curr_active_status != _prev_active_status:
-		print("Camera Active Status Changed: %s" % _curr_active_status)
+		AceLog.printLog(["Camera Active Status Changed: %s" % _curr_active_status])
 		if !_curr_active_status:
 			_get_world_posiitons_in_view()
 		
@@ -285,7 +285,7 @@ func _get_grid_location(loc: Vector3) -> Vector3:
 
 
 func _move_camera_complete(target_pos: Vector3):
-	print("zoom repositioning complete")
+	AceLog.printLog(["zoom repositioning complete"])
 	#Snap the values to avoid floating point errors 
 	#camera dolly position
 	position = target_pos
